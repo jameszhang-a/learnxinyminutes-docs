@@ -357,41 +357,87 @@ function myFunction(thing){
 }
 myFunction("foo"); // = "FOO"
 
+// A modern way of declearing functions is with the help of arrow functions
+// They are functionally the same as with the `function` keyword, but they
+// produce cleaner code
+
+// To write the above function in arrow syntax:
+const myFunction = (thing) => {
+    return thing.toUpperCase();
+}
+myFunction("foo"); // = "FOO"
+
+// For functions that have only one parameter the parentheses `()` can be omitted.
+// When the function only contains one line which is the return statement, 
+// the brackets `{}` and the `return` keyword can be omitted. 
+// The same fucntion can be shortened to:
+const myFunction = thing => thing.toUpperCase();
+myFunction("foo"); // = "FOO"
+
+// Here is another example
+const myFunction1 = (arg1, arg2, arg3) => arg1 + arg2 + arg3;
+myFunction1(2,3,5); // = 10
+
+// NOTE: When a function takes in no parameters, parentheses `()` must be used
+const greetings = () => {
+    console.log("hello world");
+}
+
+// In order to return a multi-line value, one way is to use `{}` and `return` statement
+const multiLineFunc = (a, b) => {
+    return { // <- returning an object literal
+        firstVal  : a,
+        secondVal : b
+    }
+}
+multiLineFunc(1,2) // = {firstVal : 1, secondVal : 2}
+
+// Or, parentheses `()` can be used after the arrow `=>` and the `return` keyword
+// can be omitted
+const multiLineFunc = (a, b) => ({ // <- returning an object literal
+  firstVal  : a,
+  secondVal : b
+});
+multiLineFunc(1, 2); // = {firstVal : 1, secondVal : 2}
+
 // Note that the value to be returned must start on the same line as the
 // `return` keyword, otherwise you'll always return `undefined` due to
 // automatic semicolon insertion. Watch out for this when using Allman style.
-function myFunction(){
+const = myFunction2 = () => {
     return // <- semicolon automatically inserted here
     {thisIsAn: 'object literal'};
 }
-myFunction(); // = undefined
+myFunction1(); // = undefined
 
 // JavaScript functions are first class objects, so they can be reassigned to
 // different variable names and passed to other functions as arguments - for
 // example, when supplying an event handler:
-function myFunction(){
+const myFunction3 = () => {
     // this code will be called in 5 seconds' time
 }
-setTimeout(myFunction, 5000);
+setTimeout(myFunction3, 5000);
 // Note: setTimeout isn't part of the JS language, but is provided by browsers
 // and Node.js.
 
 // Another function provided by browsers is setInterval
-function myFunction(){
+const myFunction4 = () => {
     // this code will be called every 5 seconds
 }
-setInterval(myFunction, 5000);
+setInterval(myFunction4, 5000);
 
 // Function objects don't even have to be declared with a name - you can write
 // an anonymous function definition directly into the arguments of another.
-setTimeout(function(){
+setTimeout(() => {
     // this code will be called in 5 seconds' time
 }, 5000);
+
+// Arrow functions allows this to be very compact and ease to reade
+setTimeout(()=>{/* Some code */}, 5000)
 
 // JavaScript has function scope; functions get their own scope but other blocks
 // do not.
 if (true){
-    var i = 5;
+    let i = 5;
 }
 i; // = 5 - not undefined as you'd expect in a block-scoped language
 
