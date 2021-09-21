@@ -129,7 +129,7 @@ false;
 // and are compared with < and >
 "a" < "b"; // = true
 
-// Type coercion is performed for comparisons with double equals...
+// Type coercion is performed for comparisons with double equals...(generally not perferred)
 "5" == 5; // = true
 null == undefined; // = true
 
