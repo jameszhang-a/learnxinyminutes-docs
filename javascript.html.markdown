@@ -159,25 +159,29 @@ undefined; // used to indicate a value is not currently present (although
 // Note that 0 is falsy and "0" is truthy, even though 0 == "0".
 
 ///////////////////////////////////
-// 2. Variables, Arrays and Objects
+// 2. Variables, Constants, Arrays, and Objects
 
-// Variables are declared with the `var` keyword. JavaScript is dynamically
-// typed, so you don't need to specify type. Assignment uses a single `=`
-// character.
-var someVar = 5;
+// There are 2 main ways to declear variables in JavaScript: `let` and `const`
+// JavaScript is dynamically typed, so you don't need to specify type. 
+// Assignment uses a single `=` character.
 
-// If you leave the var keyword off, you won't get an error...
+let someVar = 5; // for variables that will be changed
+
+someVar = 10; // OK
+
+// If you leave the let keyword off when declaring a new vairable, 
+// you won't get an error...
 someOtherVar = 10;
 
 // ...but your variable will be created in the global scope, not in the scope
 // you defined it in.
 
 // Variables declared without being assigned to are set to undefined.
-var someThirdVar; // = undefined
+let someThirdVar; // = undefined
 
 // If you want to declare a couple of variables, then you could use a comma
 // separator
-var someFourthVar = 2, someFifthVar = 4;
+let someFourthVar = 2, someFifthVar = 4;
 
 // There's shorthand for performing math operations on variables:
 someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
@@ -187,8 +191,19 @@ someVar *= 10; // now someVar is 100
 someVar++; // now someVar is 101
 someVar--; // back to 100
 
-// Arrays are ordered lists of values, of any type.
-var myArray = ["Hello", 45, true];
+
+// Constants are decleared with the `const` keyword, they can't be reassigned 
+// to a different value.
+
+const age = 5; // for constants that cannot be changed
+age = 10; // NOT OK, raises a TypeError
+
+// However, mutable values (like objects and lists) are still mutable when
+// assigned to constants.
+
+// Arrays are ordered lists of values, of any type. 
+const myArray = ["Hello", 45, true];
+myArray[1] = 5 // OK
 
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
@@ -208,7 +223,7 @@ myArray.push(3); // Add as the last element
 someVar = myArray.pop(); // Remove last element and return it
 
 // Join all elements of an array with semicolon
-var myArray0 = [32,false,"js",12,56,90];
+const myArray0 = [32,false,"js",12,56,90];
 myArray0.join(";"); // = "32;false;js;12;56;90"
 
 // Get subarray of elements from index 1 (include) to 4 (exclude)
@@ -221,36 +236,29 @@ myArray0.splice(2,4,"hi","wr","ld"); // = ["js",12,56,90]
 
 // JavaScript's objects are equivalent to "dictionaries" or "maps" in other
 // languages: an unordered collection of key-value pairs.
-var myObj = {key1: "Hello", key2: "World"};
+
+const myObj = {key1: "Hello", key2: "World"};
+
+myObj.key1 = "Goodbye";
+myObj; // = {key1: "Goodbye", key2: "World"}
 
 // Keys are strings, but quotes aren't required if they're a valid
 // JavaScript identifier. Values can be any type.
-var myObj = {myKey: "myValue", "my other key": 4};
+const myObj2 = {myKey: "myValue", "my other key": 4};
 
 // Object attributes can also be accessed using the subscript syntax,
-myObj["my other key"]; // = 4
+myObj2["my other key"]; // = 4
 
 // ... or using the dot syntax, provided the key is a valid identifier.
-myObj.myKey; // = "myValue"
+myObj2.myKey; // = "myValue"
 
 // Objects are mutable; values can be changed and new keys added.
-myObj.myThirdKey = true;
+myObj2.myThirdKey = true;
 
 // If you try to access a value that's not yet set, you'll get undefined.
-myObj.myFourthKey; // = undefined
+myObj2.myFourthKey; // = undefined
 
-// Constants are declared using the const keyword.
-const MY_CONST = 2;
-const MY_OBJ = {key1: "Hello", key2: "World"};
 
-// Constants can't be reassigned to a different value.
-MY_CONST = 3; // raises a TypeError
-const MY_OBJ = {key1: "Hello", key2: "World"}; // raises a TypeError
-
-// However, mutable values (like objects and lists) are still mutable when
-// assigned to constants.
-MY_OBJ.key1 = "Goodbye";
-MY_OBJ; // = {key1: "Goodbye", key2: "World"
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
