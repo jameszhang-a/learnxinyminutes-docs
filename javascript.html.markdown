@@ -26,12 +26,10 @@ the ECMAScript specification. In this document, we describe the ECMAScript 2015
 version (also known as ES6), which is supported by the latest versions of
 most popular implementations.
 
-There are still JavaScript implementations without ES2015 support in the wild,
+There are still JavaScript implementations without ES6 support in the wild,
 though; the most popular being Microsoft Internet Explorer with a 3.7% market
 share on the public Internet (Aug 2017) and much higher usage in some corporate
-environments. Although [Babel] can be used to translate ES2015 code into a form
-older implementations understand, we've marked new ES2015 features with
-`[ES2015]` in this document for that reason.
+environments.
 
 [Babel]: https://babeljs.io
 
@@ -94,7 +92,7 @@ false;
 'abc';
 "Hello, world";
 
-// [ES2015] Strings can also be created using template literals, which are
+// Strings can also be created using template literals, which are
 // surrounded by `, and can contain JavaScript expressions inside ${ } blocks.
 `one plus two is ${1 + 2}`; // = "one plus two is 3"
 
@@ -241,7 +239,7 @@ myObj.myThirdKey = true;
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
 
-// [ES2015] Constants are declared using the const keyword.
+// Constants are declared using the const keyword.
 const MY_CONST = 2;
 const MY_OBJ = {key1: "Hello", key2: "World"};
 
@@ -624,10 +622,10 @@ if (Object.create === undefined){ // don't overwrite it if it exists
 }
 
 ///////////////////////////////////////////
-// 6. [ES2015] Modules, Imports and Exports
+// 6. Modules, Imports and Exports
 
-// ES2015 introduces a module system, which allows JavaScript files to access
-// code and data from each other. Unlike most parts of ES2015, many modern
+// ES6 introduces a module system, which allows JavaScript files to access
+// code and data from each other. Unlike most parts of ES6, many modern
 // browsers are still working on native support for modules, so it's usually
 // necessary to use a build tool to resolve module imports and exports.
 
