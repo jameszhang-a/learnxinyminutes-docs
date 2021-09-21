@@ -21,6 +21,20 @@ a lot of the basic syntax will already be familiar. Despite this, and despite
 the similarity in name, JavaScript's object model is significantly different to
 Java's.
 
+The syntax and behaviour of JavaScript is standardised by Ecma International, in
+the ECMAScript specification. In this document, we describe the ECMAScript 2015
+version (also known as ES6), which is supported by the latest versions of
+most popular implementations.
+
+There are still JavaScript implementations without ES2015 support in the wild,
+though; the most popular being Microsoft Internet Explorer with a 3.7% market
+share on the public Internet (Aug 2017) and much higher usage in some corporate
+environments. Although [Babel] can be used to translate ES2015 code into a form
+older implementations understand, we've marked new ES2015 features with
+`[ES2015]` in this document for that reason.
+
+[Babel]: https://babeljs.io
+
 ```js
 // Single-line comments start with two slashes.
 /* Multiline comments start with slash-star,
@@ -79,6 +93,15 @@ false;
 // Strings are created with ' or ".
 'abc';
 "Hello, world";
+
+// [ES2015] Strings can also be created using template literals, which are
+// surrounded by `, and can contain JavaScript expressions inside ${ } blocks.
+`one plus two is ${1 + 2}`; // = "one plus two is 3"
+
+// Unlike string literals, template literals can also span multiple lines.
+`  1
++ 2
+= ${1 + 2}`; // = "  1\n+ 2\n= 3"
 
 // Negation uses the ! symbol
 !true; // = false
@@ -217,6 +240,19 @@ myObj.myThirdKey = true;
 
 // If you try to access a value that's not yet set, you'll get undefined.
 myObj.myFourthKey; // = undefined
+
+// [ES2015] Constants are declared using the const keyword.
+const MY_CONST = 2;
+const MY_OBJ = {key1: "Hello", key2: "World"};
+
+// Constants can't be reassigned to a different value.
+MY_CONST = 3; // raises a TypeError
+const MY_OBJ = {key1: "Hello", key2: "World"}; // raises a TypeError
+
+// However, mutable values (like objects and lists) are still mutable when
+// assigned to constants.
+MY_OBJ.key1 = "Goodbye";
+MY_OBJ; // = {key1: "Goodbye", key2: "World"
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
@@ -587,6 +623,50 @@ if (Object.create === undefined){ // don't overwrite it if it exists
     };
 }
 
+///////////////////////////////////////////
+// 6. [ES2015] Modules, Imports and Exports
+
+// ES2015 introduces a module system, which allows JavaScript files to access
+// code and data from each other. Unlike most parts of ES2015, many modern
+// browsers are still working on native support for modules, so it's usually
+// necessary to use a build tool to resolve module imports and exports.
+
+// To access code and data from another file, use the import keyword.
+import {foo, bar} from 'myModule';
+
+// Imports can also be aliased using the as keyword, to improve clarity or
+// avoid name clashes.
+import {foo as otherFoo} from 'otherModule';
+
+// You can also import everything that another module exports into one alias.
+// Note that the alias is mandatory in this case.
+import * as thirdModule from 'thirdModule';
+thirdModule.foo;
+thirdModule.bar;
+
+// To expose code and data for other files to import, use the export keyword.
+// Like import, it supports aliasing.
+export {myNumber, myFunction as func};
+
+// You can also use a shorthand to declare a variable, constant, function or
+// class and export it in the same line.
+export var myNumber = 42;
+export let myOtherNumber = 43;
+export const TAU = Math.PI / 2;
+export function double(x){ return x * 2; }
+export class foo { constructor(x){ this.x = x; } }
+
+// Sometimes a module has one particular thing in it that is either the only
+// thing it needs to export, or the most common or important one. In those
+// cases, it can expose a default export.
+export {myNumber, myFunction as default};
+export default function double(x){ return x * 2; }
+
+// Import a module's default export by putting it outside the curly brackets.
+import myDefault from 'fourthModule';
+import otherDefault, { otherValue } from 'fifthModule';
+
+
 // ES6 Additions
 
 // The "let" keyword allows you to define variables in a lexical scope, 
@@ -659,6 +739,11 @@ to JavaScript and help experienced developers learn more about its best practice
 as well as advanced topics with concise explanations.
 
 
+The [ECMAScript Compatibility Table][12] can tell you which parts of new
+versions of the ECMAScript standard are supported by which versions of which
+JavaScript implementations, and for browsers [StatCounter GlobalStats][13] can
+tell you how widely-used each version of each one is.
+
 In addition to direct contributors to this article, some content is adapted from
 Louie Dinh's Python tutorial on this site, and the [JS Tutorial][7] on the
 Mozilla Developer Network.
@@ -674,3 +759,5 @@ Mozilla Developer Network.
 [8]: http://eloquentjavascript.net/
 [10]: http://jstherightway.org/
 [11]: https://javascript.info/
+[12]: http://kangax.github.io/compat-table/
+[13]: http://gs.statcounter.com
