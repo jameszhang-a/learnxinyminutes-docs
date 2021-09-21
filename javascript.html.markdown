@@ -54,35 +54,35 @@ doStuff()
 // JavaScript has one number type (which is a 64-bit IEEE 754 double).
 // Doubles have a 52-bit mantissa, which is enough to store integers
 // up to about 9✕10¹⁵ precisely.
-3; // = 3
-1.5; // = 1.5
+3;          // = 3
+1.5;        // = 1.5
 
 // Some basic arithmetic works as you'd expect.
-1 + 1; // = 2
-0.1 + 0.2; // = 0.30000000000000004
-8 - 1; // = 7
-10 * 2; // = 20
-35 / 5; // = 7
+1 + 1;      // = 2
+0.1 + 0.2;  // = 0.30000000000000004
+8 - 1;      // = 7
+10 * 2;     // = 20
+35 / 5;     // = 7
 
 // Including uneven division.
-5 / 2; // = 2.5
+5 / 2;      // = 2.5
 
 // And modulo division.
-10 % 2; // = 0
-30 % 4; // = 2
-18.5 % 7; // = 4.5
+10 % 2;     // = 0
+30 % 4;     // = 2
+18.5 % 7;   // = 4.5
 
 // Bitwise operations also work; when you perform a bitwise operation your float
 // is converted to a signed int *up to* 32 bits.
-1 << 2; // = 4
+1 << 2;     // = 4
 
 // Precedence is enforced with parentheses.
 (1 + 3) * 2; // = 8
 
 // There are three special not-a-real-number values:
-Infinity; // result of e.g. 1/0
--Infinity; // result of e.g. -1/0
-NaN; // result of e.g. 0/0, stands for 'Not a Number'
+Infinity;   // result of e.g. 1/0
+-Infinity;  // result of e.g. -1/0
+NaN;        // result of e.g. 0/0, stands for 'Not a Number'
 
 // There's also a boolean type.
 true;
@@ -102,44 +102,44 @@ false;
 = ${1 + 2}`; // = "  1\n+ 2\n= 3"
 
 // Negation uses the ! symbol
-!true; // = false
-!false; // = true
+!true;      // = false
+!false;     // = true
 
 // Equality is ===
-1 === 1; // = true
-2 === 1; // = false
+1 === 1;    // = true
+2 === 1;    // = false
 
 // Inequality is !==
-1 !== 1; // = false
-2 !== 1; // = true
+1 !== 1;    // = false
+2 !== 1;    // = true
 
 // More comparisons
-1 < 10; // = true
-1 > 10; // = false
-2 <= 2; // = true
-2 >= 2; // = true
+1 < 10;     // = true
+1 > 10;     // = false
+2 <= 2;     // = true
+2 >= 2;     // = true
 
 // Strings are concatenated with +
-"Hello " + "world!"; // = "Hello world!"
+"Hello " + "world!";        // = "Hello world!"
 
 // ... which works with more than just strings
-"1, 2, " + 3; // = "1, 2, 3"
-"Hello " + ["world", "!"]; // = "Hello world,!"
+"1, 2, " + 3;               // = "1, 2, 3"
+"Hello " + ["world", "!"];  // = "Hello world,!"
 
 // and are compared with < and >
-"a" < "b"; // = true
+"a" < "b";          // = true
 
 // Type coercion is performed for comparisons with double equals...(generally not perferred)
-"5" == 5; // = true
-null == undefined; // = true
+"5" == 5;           // = true
+null == undefined;  // = true
 
 // ...unless you use ===
-"5" === 5; // = false
+"5" === 5;          // = false
 null === undefined; // = false
 
 // ...which can result in some weird behaviour...
-13 + !0; // 14
-"13" + !0; // '13true'
+13 + !0;    // 14
+"13" + !0;  // '13true'
 
 // You can access characters in a string with `charAt`
 "This is a string".charAt(0);  // = 'T'
@@ -162,12 +162,12 @@ undefined; // used to indicate a value is not currently present (although
 // 2. Variables, Constants, Arrays, and Objects
 
 // There are 2 main ways to declear variables in JavaScript: `let` and `const`
+// Variables defined with `let` and `const` are defined in the lexical scope
 // JavaScript is dynamically typed, so you don't need to specify type. 
 // Assignment uses a single `=` character.
 
-let someVar = 5; // for variables that will be changed
-
-someVar = 10; // OK
+let someVar = 5;    // for variables that will be changed
+someVar = 10;       // OK
 
 // If you leave the let keyword off when declaring a new vairable, 
 // you won't get an error...
@@ -177,37 +177,37 @@ someOtherVar = 10;
 // you defined it in.
 
 // Variables declared without being assigned to are set to undefined.
-let someThirdVar; // = undefined
+let someThirdVar;   // = undefined
 
 // If you want to declare a couple of variables, then you could use a comma
 // separator
 let someFourthVar = 2, someFifthVar = 4;
 
 // There's shorthand for performing math operations on variables:
-someVar += 5; // equivalent to someVar = someVar + 5; someVar is 10 now
-someVar *= 10; // now someVar is 100
+someVar += 5;   // equivalent to someVar = someVar + 5; someVar is 10 now
+someVar *= 10;  // now someVar is 100
 
 // and an even-shorter-hand for adding or subtracting 1
-someVar++; // now someVar is 101
-someVar--; // back to 100
+someVar++;      // now someVar is 101
+someVar--;      // back to 100
 
 
 // Constants are decleared with the `const` keyword, they can't be reassigned 
 // to a different value.
 
-const age = 5; // for constants that cannot be changed
-age = 10; // NOT OK, raises a TypeError
+const age = 5;  // for constants that cannot be changed
+age = 10;       // NOT OK, raises a TypeError
 
 // However, mutable values (like objects and lists) are still mutable when
 // assigned to constants.
 
 // Arrays are ordered lists of values, of any type. 
 const myArray = ["Hello", 45, true];
-myArray[1] = 5 // OK
+myArray[1] = 5  // OK
 
 // Their members can be accessed using the square-brackets subscript syntax.
 // Array indices start at zero.
-myArray[1]; // = 45
+myArray[1];     // = 45
 
 // Arrays are mutable and of variable length.
 myArray.push("World");
@@ -217,17 +217,17 @@ myArray.length; // = 4
 myArray[3] = "Hello";
 
 // Add and remove element from front or back end of an array
-myArray.unshift(3); // Add as the first element
-someVar = myArray.shift(); // Remove first element and return it
-myArray.push(3); // Add as the last element
-someVar = myArray.pop(); // Remove last element and return it
+myArray.unshift(3);         // Add as the first element
+someVar = myArray.shift();  // Remove first element and return it
+myArray.push(3);            // Add as the last element
+someVar = myArray.pop();    // Remove last element and return it
 
 // Join all elements of an array with semicolon
 const myArray0 = [32,false,"js",12,56,90];
-myArray0.join(";"); // = "32;false;js;12;56;90"
+myArray0.join(";");     // = "32;false;js;12;56;90"
 
 // Get subarray of elements from index 1 (include) to 4 (exclude)
-myArray0.slice(1,4); // = [false,"js",12]
+myArray0.slice(1,4);    // = [false,"js",12]
 
 // Remove 4 elements starting from index 2, and insert there strings
 // "hi","wr" and "ld"; return removed subarray
@@ -259,6 +259,13 @@ myObj2.myThirdKey = true;
 myObj2.myFourthKey; // = undefined
 
 
+// Older Javascript uses the keyword `var` to define variables which 
+// have function scope
+// In most cases, it is not advised to use the `var` keyword anymore
+if (true){
+    var i = 5;
+}
+i; // = 5  (not undefined as you'd expect )
 
 ///////////////////////////////////
 // 3. Logic and Control Structures
@@ -357,15 +364,26 @@ function myFunction(thing){
 }
 myFunction("foo"); // = "FOO"
 
-// A modern way of declearing functions is with the help of arrow functions
-// They are functionally the same as with the `function` keyword, but they
-// produce cleaner code
+// A modern way of declearing functions is with the help of arrow functions.
+// Arrow functions are similar to lambda functions in other languages like Python and Java
+// They are "equivalent" to the `function` keyword, but they produce cleaner code
 
 // To write the above function in arrow syntax:
 const myFunction = (thing) => {
     return thing.toUpperCase();
 }
 myFunction("foo"); // = "FOO"
+
+
+// The word "equivalent" is in double quotes because a function defined
+// using arrow functions cannnot be called before the definition.
+// The following is an example of invalid usage:
+
+add(1, 8);
+
+const add = (a, b) => {
+    return a + b;
+};
 
 // For functions that have only one parameter the parentheses `()` can be omitted.
 // When the function only contains one line which is the return statement, 
@@ -717,49 +735,6 @@ export default function double(x){ return x * 2; }
 // Import a module's default export by putting it outside the curly brackets.
 import myDefault from 'fourthModule';
 import otherDefault, { otherValue } from 'fifthModule';
-
-
-// ES6 Additions
-
-// The "let" keyword allows you to define variables in a lexical scope, 
-// as opposed to a block scope like the var keyword does.
-let name = "Billy";
-
-// Variables defined with let can be reassigned new values.
-name = "William";
-
-// The "const" keyword allows you to define a variable in a lexical scope
-// like with let, but you cannot reassign the value once one has been assigned.
-
-const pi = 3.14;
-
-pi = 4.13; // You cannot do this.
-
-// There is a new syntax for functions in ES6 known as "lambda syntax".
-// This allows functions to be defined in a lexical scope like with variables
-// defined by const and let. 
-
-const isEven = (number) => {
-    return number % 2 === 0;
-};
-
-isEven(7); // false
-
-// The "equivalent" of this function in the traditional syntax would look like this:
-
-function isEven(number) {
-    return number % 2 === 0;
-};
-
-// I put the word "equivalent" in double quotes because a function defined
-// using the lambda syntax cannnot be called before the definition.
-// The following is an example of invalid usage:
-
-add(1, 8);
-
-const add = (firstNumber, secondNumber) => {
-    return firstNumber + secondNumber;
-};
 ```
 
 ## Further Reading
